@@ -15,7 +15,7 @@ namespace Figures.NUnitTests
         {
             get
             {
-                //yield return new TestCaseData(3).Returns(new Square(3));
+                yield return new TestCaseData(3).Returns(new Square(3));
                 yield return new TestCaseData(0).Throws(typeof(ArgumentException));
                 yield return new TestCaseData(-4).Throws(typeof(ArgumentException));
                 yield return new TestCaseData(double.NaN).Throws(typeof(ArgumentException));

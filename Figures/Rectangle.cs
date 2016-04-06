@@ -19,7 +19,7 @@ namespace Figures
             get { return sideA; }
             private set
             {
-                if(value <= 0)
+                if(double.IsInfinity(value) || double.IsNaN(value) || value <= 0)
                     throw new ArgumentException();
                 sideA = value;
             }
@@ -30,7 +30,7 @@ namespace Figures
             get { return sideB; }
             private set
             {
-                if (value <= 0)
+                if (double.IsInfinity(value) || double.IsNaN(value) || value <= 0)
                     throw new ArgumentException();
                 sideB = value;
             }
@@ -46,11 +46,6 @@ namespace Figures
 
         public Rectangle(double a, double b)
         {
-            if(double.IsNaN(a) || double.IsNaN(b) ||
-                double.IsPositiveInfinity(a) || double.IsPositiveInfinity(b) ||
-                double.IsNegativeInfinity(a) || double.IsNegativeInfinity(b))
-                throw new ArgumentException();
-
             SideA = a;
             SideB = b;
         }
@@ -59,28 +54,30 @@ namespace Figures
 
         #region Public Methods
 
-        public double Area()
+        public virtual double Area()
         {
             return SideA*SideB;
         }
 
-        public double Perimeter()
+        public virtual double Perimeter()
         {
             return 2*(SideA + SideB);
         }
 
-        public double GetDiagonal()
+        public virtual double GetDiagonal()
         {
             return Math.Pow(SideA*SideA + SideB*SideB, 0.5);
         }
 
-        public double GetRadiusCircumcircle()
+        public virtual double GetRadiusCircumcircle()
         {
             return (double)GetDiagonal()/2;
         }
 
-        public bool Equals(Rectangle other)
+        public virtual bool Equals(Rectangle other)
         {
+            if (other == null || this == null)
+                throw new ArgumentNullException();
             return other.SideA.Equals(SideA) && other.SideB.Equals(SideB) ? true : false;
         }
 

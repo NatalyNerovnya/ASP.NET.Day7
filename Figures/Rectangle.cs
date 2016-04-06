@@ -19,7 +19,7 @@ namespace Figures
             get { return sideA; }
             private set
             {
-                if(value < 0)
+                if(value <= 0)
                     throw new ArgumentException();
                 sideA = value;
             }
@@ -30,7 +30,7 @@ namespace Figures
             get { return sideB; }
             private set
             {
-                if (value < 0)
+                if (value <= 0)
                     throw new ArgumentException();
                 sideB = value;
             }
@@ -46,9 +46,9 @@ namespace Figures
 
         public Rectangle(double a, double b)
         {
-            if(a == Double.NaN || b == Double.NaN ||
-                a == Double.NegativeInfinity || b == Double.NegativeInfinity ||
-                a == Double.PositiveInfinity || b == Double.PositiveInfinity)
+            if(double.IsNaN(a) || double.IsNaN(b) ||
+                double.IsPositiveInfinity(a) || double.IsPositiveInfinity(b) ||
+                double.IsNegativeInfinity(a) || double.IsNegativeInfinity(b))
                 throw new ArgumentException();
 
             SideA = a;
@@ -59,7 +59,7 @@ namespace Figures
 
         #region Public Methods
 
-        public  double  Area()
+        public double Area()
         {
             return SideA*SideB;
         }

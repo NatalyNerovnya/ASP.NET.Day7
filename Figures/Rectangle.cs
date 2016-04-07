@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Figures
 {
+    /// <summary>
+    /// Describe rectangle
+    /// </summary>
     public class Rectangle :IFigure, IEquatable<Rectangle>
     {
         #region Fields
@@ -19,9 +22,7 @@ namespace Figures
             get { return sideA; }
             private set
             {
-                if(double.IsInfinity(value) || double.IsNaN(value) || value <= 0)
-                    throw new ArgumentException();
-                sideA = value;
+                sideA = GoodSide(value);
             }
         }
 
@@ -30,20 +31,26 @@ namespace Figures
             get { return sideB; }
             private set
             {
-                if (double.IsInfinity(value) || double.IsNaN(value) || value <= 0)
-                    throw new ArgumentException();
-                sideB = value;
+                sideB = GoodSide(value);
             }
         }
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Constructor(rectangle with sides 1 and 2)
+        /// </summary>
         public Rectangle()
         {
             SideA = 1;
-            SideB = 1;
+            SideB = 2;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="a">Higth</param>
+        /// <param name="b">Width</param>
         public Rectangle(double a, double b)
         {
             SideA = a;
@@ -53,27 +60,47 @@ namespace Figures
         #endregion
 
         #region Public Methods
-
+        /// <summary>
+        /// Count area
+        /// </summary>
+        /// <returns>Area</returns>
         public virtual double Area()
         {
             return SideA*SideB;
         }
 
+        /// <summary>
+        /// Count perimetr
+        /// </summary>
+        /// <returns>Perimetr</returns>
         public virtual double Perimeter()
         {
             return 2*(SideA + SideB);
         }
 
+        /// <summary>
+        /// Count length of diagonal
+        /// </summary>
+        /// <returns>Length of diagonal</returns>
         public virtual double GetDiagonal()
         {
             return Math.Pow(SideA*SideA + SideB*SideB, 0.5);
         }
 
+        /// <summary>
+        /// Count radius of circumcircle
+        /// </summary>
+        /// <returns>Radius of circumcircle</returns>
         public virtual double GetRadiusCircumcircle()
         {
             return (double)GetDiagonal()/2;
         }
 
+        /// <summary>
+        /// Compare two rectangles
+        /// </summary>
+        /// <param name="other">Second rectangle</param>
+        /// <returns>True, if rectangle are equal</returns>
         public virtual bool Equals(Rectangle other)
         {
             if (other == null || this == null)
@@ -82,5 +109,19 @@ namespace Figures
         }
 
         #endregion
+
+        #region Private methods
+        /// <summary>
+        /// Check the side
+        /// </summary>
+        /// <param name="a">Side</param>
+        /// <returns>Side, if it's ok</returns>
+        private double GoodSide(double a)
+        {
+            if (double.IsNaN(a) || double.IsInfinity(a) || a.Equals(0.0) || a < 0)
+                throw new ArgumentException();
+            return a;
+        }
+#endregion
     }
 }

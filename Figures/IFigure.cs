@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Figures
 {
+    /// <summary>
+    /// Describe figure
+    /// </summary>
     interface IFigure
     {
         double Area();

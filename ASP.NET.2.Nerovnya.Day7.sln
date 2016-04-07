@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figures", "Figures\Figures.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figures.NUnitTests", "Figures.NUnitTests\Figures.NUnitTests.csproj", "{EE5BADC7-94E2-4ECF-AEBE-3C51DF7CADD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomBinarySearch", "CustomBinarySearch\CustomBinarySearch.csproj", "{D5984EA3-335E-45A3-AEF0-06E0648B8914}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomBinarySearch.NUnitTests", "CustomBinarySearch.NUnitTests\CustomBinarySearch.NUnitTests.csproj", "{CD48CAE4-BA89-4EFC-B50F-89FB831C6AF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{EE5BADC7-94E2-4ECF-AEBE-3C51DF7CADD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE5BADC7-94E2-4ECF-AEBE-3C51DF7CADD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE5BADC7-94E2-4ECF-AEBE-3C51DF7CADD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5984EA3-335E-45A3-AEF0-06E0648B8914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5984EA3-335E-45A3-AEF0-06E0648B8914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5984EA3-335E-45A3-AEF0-06E0648B8914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5984EA3-335E-45A3-AEF0-06E0648B8914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD48CAE4-BA89-4EFC-B50F-89FB831C6AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD48CAE4-BA89-4EFC-B50F-89FB831C6AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD48CAE4-BA89-4EFC-B50F-89FB831C6AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD48CAE4-BA89-4EFC-B50F-89FB831C6AF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

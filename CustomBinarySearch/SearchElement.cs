@@ -22,10 +22,7 @@ namespace CustomBinarySearch
         /// <returns>Index of element in array or -1, if it doesn't exist</returns>
         public static int BinarySearch(T[] array, T item, Comparison<T> comparer = null)
         {
-            if (array == null)
-                throw new ArgumentNullException();
-            if (array.Length == 0)
-                throw new ArgumentException();
+            CheckInputArray(array);
             if (array.Length == 1 && array[0].Equals(item))
                 return 0;
             if (array.Length == 1 && !array[0].Equals(item))
@@ -47,10 +44,7 @@ namespace CustomBinarySearch
         /// <returns>Index of element in array or -1, if it doesn't exist</returns>
         public static int BinarySearch(T[] array, T item, IComparer<T> comparer)
         {
-            if (array == null)
-                throw new ArgumentNullException();
-            if (array.Length == 0)
-                throw new ArgumentException();
+            CheckInputArray(array);
             if (array.Length == 1 && array[0].Equals(item))
                 return 0;
             if (array.Length == 1 && !array[0].Equals(item))
@@ -65,6 +59,18 @@ namespace CustomBinarySearch
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Check array on null and length
+        /// </summary>
+        /// <param name="array">Array</param>
+        private static void CheckInputArray(T[] array)
+        {
+            if (array == null)
+                throw new ArgumentNullException();
+            if (array.Length == 0)
+                throw new ArgumentException();
+
+        }
         /// <summary>
         /// Check weather the array is sorted
         /// </summary>

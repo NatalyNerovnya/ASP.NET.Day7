@@ -10,7 +10,7 @@ namespace Figures
     /// <summary>
     /// Describe rectangle
     /// </summary>
-    public class Rectangle :IFigure, IEquatable<Rectangle>
+    public class Rectangle :CheckParametrs, IFigure, IEquatable<Rectangle>
     {
         #region Fields
         private double sideA, sideB;
@@ -22,7 +22,8 @@ namespace Figures
             get { return sideA; }
             private set
             {
-                sideA = GoodSide(value);
+                GoodSide(value);
+                sideA = value;
             }
         }
 
@@ -31,7 +32,8 @@ namespace Figures
             get { return sideB; }
             private set
             {
-                sideB = GoodSide(value);
+                GoodSide(value);
+                sideB = value;
             }
         }
         #endregion
@@ -103,25 +105,12 @@ namespace Figures
         /// <returns>True, if rectangle are equal</returns>
         public virtual bool Equals(Rectangle other)
         {
-            if (other == null || this == null)
-                throw new ArgumentNullException();
+            ChekRefOnNull(this);
+            ChekRefOnNull(other);
             return other.SideA.Equals(SideA) && other.SideB.Equals(SideB) ? true : false;
         }
 
         #endregion
 
-        #region Private methods
-        /// <summary>
-        /// Check the side
-        /// </summary>
-        /// <param name="a">Side</param>
-        /// <returns>Side, if it's ok</returns>
-        private double GoodSide(double a)
-        {
-            if (double.IsNaN(a) || double.IsInfinity(a) || a.Equals(0.0) || a < 0)
-                throw new ArgumentException();
-            return a;
-        }
-#endregion
     }
 }

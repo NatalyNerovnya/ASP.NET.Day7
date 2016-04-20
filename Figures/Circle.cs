@@ -11,7 +11,7 @@ namespace Figures
     /// <summary>
     /// Describe Circle
     /// </summary>
-    public class Circle : IFigure, IEquatable<Circle>
+    public class Circle : CheckParametrs, IFigure, IEquatable<Circle>
     {
 
         #region Private Fields
@@ -42,7 +42,8 @@ namespace Figures
             get { return radius;}
             private set
             {
-                radius = GoodSide(value);
+                GoodSide(value);
+                radius = value;
             }
         }
         #endregion
@@ -64,8 +65,8 @@ namespace Figures
         /// <returns>True, if circles have the same radius</returns>
         public bool Equals(Circle other)
         {
-            if(this == null || other == null)
-                throw new ArgumentException();
+            ChekRefOnNull(this);
+            ChekRefOnNull(other);
 
             if (Radius.Equals(other.Radius))
                 return true;
@@ -83,18 +84,5 @@ namespace Figures
 
         #endregion
 
-        #region Private methods
-        /// <summary>
-        /// Check the side
-        /// </summary>
-        /// <param name="a">Side</param>
-        /// <returns>Side, if it's ok</returns>
-        private double GoodSide(double a)
-        {
-            if (double.IsNaN(a) || double.IsInfinity(a) || a.Equals(0.0) || a < 0)
-                throw new ArgumentException();
-            return a;
-        }
-        #endregion
     }
 }

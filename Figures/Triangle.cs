@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Figures
 {
-    public class Triangle : IFigure, IEquatable<Triangle>
+    public class Triangle : CheckParametrs, IFigure, IEquatable<Triangle>
     {
         /// <summary>
         /// Describe triangle
@@ -22,19 +22,29 @@ namespace Figures
         public double SideA
         {
             get { return sideA; }
-            private set { value = GoodSide(value); }
+            private set
+            {
+                GoodSide(value);
+                sideA = value;
+            }
         }
 
         public double SideB
         {
             get { return sideB; }
-            private set { value = GoodSide(value); }
+            private set {
+                GoodSide(value);
+                sideB = value;
+            }
         }
 
         public double SideC
         {
             get { return sideC; }
-            private set { value = GoodSide(value); }
+            private set {
+                GoodSide(value);
+                sideC = value;
+            }
         }
 
 
@@ -94,8 +104,8 @@ namespace Figures
         /// <returns>True, if triangles are equal</returns>
         public bool Equals(Triangle other)
         {
-            if (other == null || this == null)
-                throw new ArgumentNullException();
+            ChekRefOnNull(this);
+            ChekRefOnNull(other);
 
             if (SideA.Equals(SideB) && SideA.Equals(SideC))
                 return true;
@@ -109,8 +119,8 @@ namespace Figures
         /// <returns>True, if triangles are similar</returns>
         public bool IsSimilar(Triangle other)
         {
-            if (other == null || this == null)
-                throw new ArgumentNullException();
+            ChekRefOnNull(this);
+            ChekRefOnNull(other);
 
             if ((SideA/other.SideA).Equals(SideB/other.SideB) && (SideA/other.SideA).Equals(SideC/other.SideC))
                 return true;
@@ -155,18 +165,6 @@ namespace Figures
         #endregion
 
         #region Private  Methods
-        /// <summary>
-        /// Check the side
-        /// </summary>
-        /// <param name="a">Side</param>
-        /// <returns>Side, if it's ok</returns>
-        private double GoodSide(double a)
-        {
-            if (double.IsNaN(a) || double.IsInfinity(a) || a.Equals(0.0) || a < 0)
-                throw new ArgumentException();
-            return a;
-        }
-
         /// <summary>
         /// Check the existence of triangle
         /// </summary>
